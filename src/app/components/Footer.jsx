@@ -12,6 +12,7 @@ import {
   Youtube,
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   const quickLinks = [
@@ -51,11 +52,11 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="lg:col-span-2">
             <div className="flex items-center space-x-2 mb-6">
-              <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-2 rounded-lg">
-                <Dumbbell className="h-6 w-6 text-white" />
+              <div className="border border-orange-500 p-1 rounded-lg">
+                <Image src="/logo.jpg" alt="Dumbbell" height={32} width={32} />
               </div>
               <span className="text-2xl font-bold text-white">
-                Fitness<span className="text-orange-500">Club</span>
+                TheFitness<span className="text-orange-500">Club</span>
               </span>
             </div>
 
