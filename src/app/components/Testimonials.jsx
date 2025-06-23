@@ -3,8 +3,10 @@
 
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const Testimonials = () => {
+  const router = useRouter();
   const testimonials = [
     {
       name: 'Jennifer Martinez',
@@ -129,7 +131,7 @@ const Testimonials = () => {
               <div className="text-orange-100">Member Satisfaction</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-white mb-2">5,000+</div>
+              <div className="text-4xl font-bold text-white mb-2">500+</div>
               <div className="text-orange-100">Success Stories</div>
             </div>
             <div>
@@ -146,7 +148,7 @@ const Testimonials = () => {
         {/* CTA */}
         <div className="mt-12 text-center">
           <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Write Your Success Story?</h3>
-          <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-orange-500/25 transform hover:scale-105">
+          <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-orange-500/25 transform hover:scale-105" onClick={() => router.push('/#contact')}>
             Start Your Transformation Today
           </button>
         </div>

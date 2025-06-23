@@ -1,38 +1,46 @@
 "use client";
 
-import React from 'react';
-import { Dumbbell, MapPin, Phone, Mail, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import React from "react";
+import {
+  Dumbbell,
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+} from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   const quickLinks = [
-    { name: 'About Us', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Trainers', href: '#trainers' },
-    { name: 'Contact', href: '#contact' }
+    { name: "About Us", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Pricing", href: "#pricing" },
+    { name: "Trainers", href: "#trainers" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const programs = [
-    { name: 'Personal Training', href: '#' },
-    { name: 'Group Classes', href: '#' },
-    { name: 'HIIT Training', href: '#' },
-    { name: 'Yoga & Pilates', href: '#' },
-    { name: 'Nutrition Coaching', href: '#' }
+    { name: "Personal Training", href: "#" },
+    { name: "Group Classes", href: "#" },
+    { name: "HIIT Training", href: "#" },
+    { name: "Yoga & Pilates", href: "#" },
+    { name: "Nutrition Coaching", href: "#" },
   ];
 
   const support = [
-    { name: 'Member Portal', href: '#' },
-    { name: 'Class Schedule', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Policies', href: '#' },
-    { name: 'Privacy Policy', href: '#' }
+    { name: "FAQ", href: "#" },
+    { name: "Policies", href: "#" },
+    { name: "Privacy Policy", href: "#" },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', name: 'Facebook' },
-    { icon: Instagram, href: '#', name: 'Instagram' },
-    { icon: Twitter, href: '#', name: 'Twitter' },
-    { icon: Youtube, href: '#', name: 'YouTube' }
+    { icon: Facebook, href: "#", name: "Facebook" },
+    { icon: Instagram, href: "#", name: "Instagram" },
+    { icon: Twitter, href: "#", name: "Twitter" },
+    { icon: Youtube, href: "#", name: "YouTube" },
   ];
 
   return (
@@ -50,21 +58,24 @@ const Footer = () => {
                 Fitness<span className="text-orange-500">Club</span>
               </span>
             </div>
-            
+
             <p className="text-gray-300 mb-6 leading-relaxed">
-              Transform your life with our world-class fitness facilities, expert trainers, 
-              and supportive community. Your journey to better health starts here.
+              Transform your life with our world-class fitness facilities,
+              expert trainers, and supportive community. Your journey to better
+              health starts here.
             </p>
 
             {/* Contact Info */}
             <div className="space-y-3">
               <div className="flex items-center text-gray-300">
                 <MapPin className="h-4 w-4 mr-3 text-orange-500" />
-                <span>123 Fitness Street, Downtown District, City 12345</span>
+                <span>
+                  S9 Upper Ground floor, Nafees Road, New Delhi 110025
+                </span>
               </div>
               <div className="flex items-center text-gray-300">
                 <Phone className="h-4 w-4 mr-3 text-orange-500" />
-                <span>(555) 123-4567</span>
+                <span>(+91) 9911456101</span>
               </div>
               <div className="flex items-center text-gray-300">
                 <Mail className="h-4 w-4 mr-3 text-orange-500" />
@@ -79,7 +90,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={link.href}
                     className="text-gray-300 hover:text-orange-500 transition-colors duration-200"
                   >
@@ -96,7 +107,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {programs.map((program, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={program.href}
                     className="text-gray-300 hover:text-orange-500 transition-colors duration-200"
                   >
@@ -113,7 +124,7 @@ const Footer = () => {
             <ul className="space-y-3">
               {support.map((item, index) => (
                 <li key={index}>
-                  <a 
+                  <a
                     href={item.href}
                     className="text-gray-300 hover:text-orange-500 transition-colors duration-200"
                   >
@@ -126,7 +137,7 @@ const Footer = () => {
         </div>
 
         {/* Newsletter Signup */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        {/* <div className="mt-12 pt-8 border-t border-gray-800">
           <div className="max-w-md mx-auto text-center lg:max-w-none lg:text-left lg:flex lg:items-center lg:justify-between">
             <div className="lg:flex-1">
               <h3 className="text-xl font-semibold text-white mb-2">Stay Updated</h3>
@@ -145,7 +156,7 @@ const Footer = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
 
       {/* Bottom Footer */}
@@ -154,7 +165,8 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row items-center justify-between py-6">
             {/* Copyright */}
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2024 Fitness Club. All rights reserved. | Privacy Policy | Terms of Service
+              © 2025 Fitness Club. All rights reserved. | Privacy Policy | Terms
+              of Service
             </div>
 
             {/* Social Links */}
@@ -178,7 +190,14 @@ const Footer = () => {
       {/* Floating CTA */}
       <div className="fixed bottom-6 right-6 z-40">
         <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white p-4 rounded-full shadow-2xl hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-110 hover:shadow-orange-500/25">
-          <Phone className="h-6 w-6" />
+          <Link
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_PHONE_NUMBER}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" "
+          >
+            <Phone className="h-6 w-6" />
+          </Link>
         </button>
       </div>
     </footer>

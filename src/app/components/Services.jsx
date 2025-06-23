@@ -2,8 +2,10 @@
 
 import React from 'react';
 import { Dumbbell, Users, Zap, Heart, Clock, Target } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const Services = () => {
+  const router = useRouter();
   const services = [
     {
       icon: Dumbbell,
@@ -35,12 +37,7 @@ const Services = () => {
       description: 'Modern cardio equipment with entertainment systems to make your cardiovascular workouts enjoyable.',
       features: ['Treadmills', 'Ellipticals', 'Rowing Machines', 'Stationary Bikes']
     },
-    {
-      icon: Clock,
-      title: '24/7 Access',
-      description: 'Work out on your schedule with round-the-clock access to our facilities for ultimate convenience.',
-      features: ['Key Card Access', 'Security Monitoring', 'Climate Control', 'Equipment Maintenance']
-    }
+    
   ];
 
   return (
@@ -86,7 +83,7 @@ const Services = () => {
                 ))}
               </ul>
               
-              <button className="mt-6 text-orange-500 font-semibold hover:text-orange-600 transition-colors duration-200 group-hover:translate-x-2 transform transition-transform">
+              <button className="mt-6 text-orange-500 font-semibold hover:text-orange-600 transition-colors duration-200 group-hover:translate-x-2 transform cursor-pointer" onClick={()=>router.push("#contact")}>
                 Learn More →
               </button>
             </div>
@@ -101,7 +98,7 @@ const Services = () => {
           <p className="text-orange-100 text-lg mb-8 max-w-2xl mx-auto">
             Book a free consultation today and discover how our services can help you achieve your fitness goals.
           </p>
-          <button className="bg-white text-orange-500 px-8 py-4 rounded-full hover:bg-gray-50 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-2xl transform hover:scale-105">
+          <button className="bg-white text-orange-500 px-8 py-4 rounded-full hover:bg-gray-50 transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-2xl transform hover:scale-105" onClick={()=>router.push("#contact")}>
             Book Free Consultation
           </button>
         </div>

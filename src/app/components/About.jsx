@@ -1,30 +1,93 @@
 "use client";
 
-import React from 'react';
-import { Target, Heart, Trophy, Shield } from 'lucide-react';
+import React from "react";
+import { Target, Heart, Trophy, Shield } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Image from "next/image";
 
 const About = () => {
+  const gymImages = [
+    {
+      src: "/gym1.jpg",
+      alt: "Gym Image 1",
+    },
+    {
+      src: "/gym2.jpg",
+      alt: "Gym Image 2",
+    },
+
+    {
+      src: "/gym4.jpg",
+      alt: "Gym Image 4",
+    },
+
+    {
+      src: "/gym6.jpg",
+      alt: "Gym Image 6",
+    },
+    {
+      src: "/gym7.jpg",
+      alt: "Gym Image 7",
+    },
+
+    {
+      src: "/gym10.jpg",
+      alt: "Gym Image 10",
+    },
+    {
+      src: "/gym11.jpg",
+      alt: "Gym Image 11",
+    },
+    {
+      src: "/gym12.jpg",
+      alt: "Gym Image 12",
+    },
+    {
+      src: "/gym13.jpg",
+      alt: "Gym Image 13",
+    },
+
+    {
+      src: "/gym15.jpg",
+      alt: "Gym Image 15",
+    },
+    {
+      src: "/gym16.jpg",
+      alt: "Gym Image 16",
+    },
+  ];
   const features = [
     {
       icon: Target,
-      title: 'Goal-Focused Training',
-      description: 'Personalized workout plans designed to help you achieve your specific fitness goals efficiently and safely.'
+      title: "Goal-Focused Training",
+      description:
+        "Personalized workout plans designed to help you achieve your specific fitness goals efficiently and safely.",
     },
     {
       icon: Heart,
-      title: 'Health & Wellness',
-      description: 'Comprehensive approach to fitness including nutrition guidance, recovery programs, and mental wellness support.'
+      title: "Health & Wellness",
+      description:
+        "Comprehensive approach to fitness including nutrition guidance, recovery programs, and mental wellness support.",
     },
     {
       icon: Trophy,
-      title: 'Proven Results',
-      description: 'Track record of helping thousands transform their lives with measurable results and sustainable habits.'
+      title: "Proven Results",
+      description:
+        "Track record of helping thousands transform their lives with measurable results and sustainable habits.",
     },
     {
       icon: Shield,
-      title: 'Safe Environment',
-      description: 'Clean, well-maintained facilities with certified trainers ensuring your safety throughout your fitness journey.'
-    }
+      title: "Safe Environment",
+      description:
+        "Clean, well-maintained facilities with certified trainers ensuring your safety throughout your fitness journey.",
+    },
   ];
 
   return (
@@ -34,19 +97,22 @@ const About = () => {
           {/* Content */}
           <div>
             <div className="inline-flex items-center bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-6">
-              <span className="text-orange-500 text-sm font-medium">About Fitness Club</span>
+              <span className="text-orange-500 text-sm font-medium">
+                About Fitness Club
+              </span>
             </div>
-            
+
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               Where Fitness Meets
               <span className="block text-orange-500">Community</span>
             </h2>
-            
+
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              For over a decade, Fitness Club has been the premier destination for fitness enthusiasts 
-              in our community. We believe that true fitness goes beyond just physical transformation—it's 
-              about building confidence, creating lasting friendships, and developing a lifestyle that 
-              supports your long-term health and happiness.
+              For over a decade, Fitness Club has been the premier destination
+              for fitness enthusiasts in our community. We believe that true
+              fitness goes beyond just physical transformation—it's about
+              building confidence, creating lasting friendships, and developing
+              a lifestyle that supports your long-term health and happiness.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
@@ -57,8 +123,12 @@ const About = () => {
                       <feature.icon className="h-6 w-6 text-orange-500 group-hover:text-white transition-colors duration-300" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                      <p className="text-gray-600 text-sm leading-relaxed">{feature.description}</p>
+                      <h3 className="font-semibold text-gray-900 mb-2">
+                        {feature.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {feature.description}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -73,13 +143,39 @@ const About = () => {
           {/* Image */}
           <div className="relative">
             <div className="aspect-w-4 aspect-h-5 rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.pexels.com/photos/1552252/pexels-photo-1552252.jpeg" 
-                alt="Modern gym interior" 
-                className="w-full h-[600px] object-cover"
-              />
+              <Carousel
+                className=" w-full h-[600px] max-w-full !p-0 "
+                opts={{
+                  align: "start",
+                  loop: true,
+                  dragFree: true,
+                }}
+                plugins={[
+                  Autoplay({
+                    delay: 2500,
+                    stopOnInteraction: false,
+                    stopOnMouseEnter: true,
+                  }),
+                ]}
+              >
+                <CarouselContent className={"w-full h-full !p-0"}>
+                  {(gymImages || []).map((image) => (
+                    <CarouselItem key={image.alt} className={"w-full h-full "}>
+                      <div className="w-full h-[600px] relative ">
+                        <Image
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className=" rounded-2xl object-cover"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+              </Carousel>
+              
             </div>
-            
+
             {/* Floating Card */}
             <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100">
               <div className="flex items-center space-x-4">
@@ -88,7 +184,9 @@ const About = () => {
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-gray-900">10+</div>
-                  <div className="text-gray-600 text-sm">Years of Excellence</div>
+                  <div className="text-gray-600 text-sm">
+                    Years of Excellence
+                  </div>
                 </div>
               </div>
             </div>

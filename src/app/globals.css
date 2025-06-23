@@ -120,3 +120,16 @@
     @apply bg-background text-foreground;
   }
 }
+
+body{
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
+  overflow-x: none;
+  overflow-y: none;
+  scroll-behavior: smooth;
+  font-family: var(--font-inter), sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

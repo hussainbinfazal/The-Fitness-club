@@ -10,7 +10,7 @@ const Scroller = () => {
   return (
     <motion.div
     style={{ scaleX: scrollYProgress }}
-      className="h-[4px] bg-[#09bc8a] rounded-sm dark:bg-[#09bc89b6] fixed top-0 left-0 right-0 z-50 origin-left"
+      className="h-[4px] bg-gradient-to-r from-orange-500 to-orange-600 rounded-sm  fixed top-0 left-0 right-0 z-50 origin-left"
     />
   );
 };

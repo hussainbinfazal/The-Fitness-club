@@ -3,8 +3,10 @@
 
 import React from 'react';
 import { Award, Star, Calendar } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const Trainers = () => {
+  const router = useRouter();
   const trainers = [
     {
       name: 'Sarah Johnson',
@@ -140,7 +142,7 @@ const Trainers = () => {
               Schedule a free consultation and we'll match you with the perfect trainer based on 
               your goals, experience level, and preferences.
             </p>
-            <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-orange-500/25 transform hover:scale-105">
+            <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-orange-500/25 transform hover:scale-105" onClick={() => router.push('/#contact')}>
               Schedule Free Consultation
             </button>
           </div>
