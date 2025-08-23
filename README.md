@@ -1,6 +1,6 @@
 # 🏋️‍♂️ The Fitness Club
 
-A Modern, full-featured fitness club website built with Next.js, React, and Tailwind CSS. This project showcases a professional gym/fitness club platform with membership plans, trainer profiles, testimonials, contact forms, and more.
+A Modern, full-featured Fitness club website built with Next.js, React, and Tailwind CSS. This project showcases a professional gym/fitness club platform with membership plans, trainer profiles, testimonials, contact forms, and more.
 
 ---
 
