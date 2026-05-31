@@ -1,12 +1,12 @@
 "use client";
 
-import React from 'react';
+import React, { JSX } from 'react';
 import { Dumbbell, Users, Zap, Heart, Clock, Target } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-const Services = () => {
+const Services = (): JSX.Element => {
   const router = useRouter();
-  const services = [
+  const services: { icon: any, title: string, description: string, features: string[] }[] = [
     {
       icon: Dumbbell,
       title: 'Strength Training',

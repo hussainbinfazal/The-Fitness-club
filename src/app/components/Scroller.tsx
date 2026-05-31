@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { JSX } from 'react';
 import { motion, useSpring, useScroll } from 'motion/react'; // make sure you're importing from 'framer-motion'
 
-const Scroller = () => {
+const Scroller = (): JSX.Element => {
   const { scrollYProgress } = useScroll();
   
 

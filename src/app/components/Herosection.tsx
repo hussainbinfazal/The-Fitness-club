@@ -1,11 +1,11 @@
 "use client";
 
-import React from 'react';
+import React, { JSX } from 'react';
 import { Play, Star, Users, Award } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-const Hero = () => {
-        const router = useRouter();
+const Hero = (): JSX.Element => {
+  const router = useRouter();
 
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pb-4 md:pb-0">
@@ -33,7 +33,7 @@ const Hero = () => {
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Join hundreds of members who've already transformed their lives. State-of-the-art equipment, 
+            Join hundreds of members who&apos;ve already transformed their lives. State-of-the-art equipment, 
             expert trainers, and a community that motivates you to achieve your fitness goals.
           </p>
 

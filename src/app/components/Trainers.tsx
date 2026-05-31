@@ -1,13 +1,14 @@
 "use client";
 
 
-import React from 'react';
+import React, { JSX } from 'react';
+import Image from 'next/image';
 import { Award, Star, Calendar } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-const Trainers = () => {
+const Trainers = (): JSX.Element => {
   const router = useRouter();
-  const trainers = [
+  const trainers: { name: string, title: string, specialties: string[], experience: string, certifications: string[], image: string, rating: number, description: string }[] = [
     {
       name: 'Sarah Johnson',
       title: 'Head Personal Trainer',
@@ -78,15 +79,17 @@ const Trainers = () => {
               className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden hover:-translate-y-2"
             >
               {/* Image */}
-              <div className="relative overflow-hidden">
-                <img 
-                  src={trainer.image} 
+              <div className="relative overflow-hidden h-64">
+                <Image
+                  src={trainer.image}
                   alt={trainer.name}
-                  className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                  fill
+                  sizes="(max-width: 640px) 100vw,(max-width: 1024px) 50vw, 25vw"
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 flex items-center">
                   <Star className="h-4 w-4 text-yellow-500 mr-1" />
-                  <span className="text-sm font-semibold">{trainer.rating}</span>
+                  <span className="text-sm font-semibold text-gray-900">{trainer.rating}</span>
                 </div>
               </div>
 
@@ -139,7 +142,7 @@ const Trainers = () => {
               Not Sure Which Trainer is Right for You?
             </h3>
             <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-              Schedule a free consultation and we'll match you with the perfect trainer based on 
+              Schedule a free consultation and we&apos;ll match you with the perfect trainer based on 
               your goals, experience level, and preferences.
             </p>
             <button className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full hover:from-orange-600 hover:to-orange-700 transition-all duration-300 font-semibold shadow-lg hover:shadow-orange-500/25 transform hover:scale-105" onClick={() => router.push('/#contact')}>

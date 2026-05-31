@@ -6,7 +6,7 @@ function Input({
   className,
   type,
   ...props
-}) {
+}: React.InputHTMLAttributes<HTMLInputElement>) {
   return (
     <input
       type={type}

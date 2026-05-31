@@ -1,12 +1,22 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { JSX, useState } from "react";
 import { MapPin, Phone, Mail, Clock, Send, MessageCircle } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { toast } from "sonner";
 import axios from "axios";
 import { set } from "mongoose";
+
+type ContactFormData = {
+  name: string;
+  email: string;
+  phone: number;
+  interest: string;
+  message: string;
+};
+
+type ContactErrors = Partial<Record<keyof ContactFormData, string>>;
 
 export const formSchema = z.object({
   name: z.string().min(1, "Name is required").max(100, "Name is too long"),
@@ -20,41 +30,42 @@ export const formSchema = z.object({
     .min(1, "Message is required")
     .max(1000, "Message is too long"),
   phone: z
-    .string()
+    .number()
     .min(10, "Phone must be 10 digits")
     .max(10, "Phone must be 10 digits")
-    .regex(/^\d+$/, "Phone must contain only numbers"),
+    .refine((value) => /^\d+$/.test(String(value)), "Phone must contain only numbers"),
 });
-const Contact = () => {
+const Contact = () : JSX.Element => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [interest, setInterest] = useState("");
-  const [message, setMessage] = useState("");
-  const [errors, setErrors] = useState({});
-  const [formData, setFormData] = useState({
+  const [loading, setLoading] = useState<boolean>(false);
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<number>(0);
+  const [interest, setInterest] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [errors, setErrors] = useState<ContactErrors>({});
+  const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
-    phone: "",
+    phone: 0,
     interest: "",
     message: "",
   });
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent): Promise<void> => {
     setLoading(true);
     e.preventDefault();
     // Handle form submission here
 
     const result = formSchema.safeParse(formData);
     if (!result.success) {
-      const fieldErrors = {};
+      const fieldErrors: ContactErrors = {};
       result.error.errors.forEach((err) => {
-        fieldErrors[err.path[0]] = err.message;
+        const key = String(err.path[0]) as keyof ContactFormData;
+        fieldErrors[key] = err.message;
       });
       setErrors(fieldErrors);
-      toast.error(fieldErrors.message);
+      toast.error(result.error.errors[0]?.message ?? "Please fix the highlighted fields");
       setLoading(false);
       return;
     } else {
@@ -69,21 +80,25 @@ const Contact = () => {
       setMessage("");
       setEmail("");
       setName("");
-      setPhone("");
+      setPhone(0);
       setInterest("");
 
       setLoading(false);
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange : React.ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement> = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const contactInfo = [
+  const contactInfo: { icon: any; title: string; details: string[] }[] = [
     {
       icon: MapPin,
       title: "Location",
@@ -124,7 +139,7 @@ const Contact = () => {
 
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Ready to transform your life? Get in touch with us to schedule a
-            tour, ask questions, or start your membership. We're here to help!
+            tour, ask questions, or start your membership. We&apos;re here to help!
           </p>
         </div>
 
@@ -132,7 +147,7 @@ const Contact = () => {
           {/* Contact Information */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-8">
-              Let's Connect
+              Let&apos;s Connect
             </h3>
 
             <div className="space-y-6 mb-12">
@@ -256,7 +271,7 @@ const Contact = () => {
                       htmlFor="interest"
                       className="block text-sm font-medium text-gray-700 mb-2"
                     >
-                      I'm Interested In
+                      I&apos;m Interested In
                     </label>
                     <select
                       id="interest"

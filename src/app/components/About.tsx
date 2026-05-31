@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { JSX } from "react";
 import { Target, Heart, Trophy, Shield } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import {
@@ -12,8 +12,8 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 
-const About = () => {
-  const gymImages = [
+const About = (): JSX.Element => {
+  const gymImages : { src: string; alt: string }[] = [
     {
       src: "/gym1.jpg",
       alt: "Gym Image 1",
@@ -63,7 +63,7 @@ const About = () => {
       alt: "Gym Image 16",
     },
   ];
-  const features = [
+  const features : { icon: any; title: string; description: string }[] = [
     {
       icon: Target,
       title: "Goal-Focused Training",
@@ -110,7 +110,7 @@ const About = () => {
             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
               For over a decade, Fitness Club has been the premier destination
               for fitness enthusiasts in our community. We believe that true
-              fitness goes beyond just physical transformation—it's about
+              fitness goes beyond just physical transformation—it&apos;s about
               building confidence, creating lasting friendships, and developing
               a lifestyle that supports your long-term health and happiness.
             </p>
@@ -158,15 +158,17 @@ const About = () => {
                   }),
                 ]}
               >
-                <CarouselContent className={"w-full h-full !p-0"}>
-                  {(gymImages || []).map((image) => (
-                    <CarouselItem key={image.alt} className={"w-full h-full "}>
+                <CarouselContent className={" !p-0"}>
+                  {(gymImages || []).map((image, index) => (
+                    <CarouselItem key={image.alt} >
                       <div className="w-full h-[600px] relative ">
                         <Image
                           src={image.src}
                           alt={image.alt}
                           fill
-                          className=" rounded-2xl object-cover"
+                          sizes="(max-width: 768px) 100vw, 40vw"
+                          loading={index === 0 ? "eager" : "lazy"}
+                          className="rounded-2xl object-cover"
                         />
                       </div>
                     </CarouselItem>

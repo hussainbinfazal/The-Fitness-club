@@ -1,13 +1,14 @@
 "use client";
 
 
-import React from 'react';
+import React, { JSX } from 'react';
+import Image from 'next/image';
 import { Star, Quote } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
-const Testimonials = () => {
+const Testimonials = () : JSX.Element => {
   const router = useRouter();
-  const testimonials = [
+  const testimonials: { name: string, role: string, image: string, rating: number, text: string, achievement: string }[] = [
     {
       name: 'Jennifer Martinez',
       role: 'Marketing Executive',
@@ -73,7 +74,7 @@ const Testimonials = () => {
           </h2>
           
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Hear from our amazing members who have transformed 
+            Don&apos;t just take our word for it. Hear from our amazing members who have transformed 
             their lives and achieved their fitness goals with us.
           </p>
         </div>
@@ -99,7 +100,7 @@ const Testimonials = () => {
 
               {/* Testimonial Text */}
               <p className="text-gray-700 mb-6 leading-relaxed italic">
-                "{testimonial.text}"
+               &quot;{testimonial.text}&quot;
               </p>
 
               {/* Achievement Badge */}
@@ -109,10 +110,12 @@ const Testimonials = () => {
 
               {/* Member Info */}
               <div className="flex items-center">
-                <img 
-                  src={testimonial.image} 
+                <Image
+                  src={testimonial.image}
                   alt={testimonial.name}
-                  className="w-12 h-12 rounded-full object-cover mr-4"
+                  width={48}
+                  height={48}
+                  className="rounded-full object-cover mr-4"
                 />
                 <div>
                   <h4 className="font-semibold text-gray-900">{testimonial.name}</h4>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { JSX } from "react";
 import {
   Dumbbell,
   MapPin,
@@ -14,8 +14,8 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 
-const Footer = () => {
-  const quickLinks = [
+const Footer = (): JSX.Element => {
+  const quickLinks : { name: string; href: string }[] = [
     { name: "About Us", href: "#about" },
     { name: "Services", href: "#services" },
     { name: "Pricing", href: "#pricing" },
@@ -23,7 +23,7 @@ const Footer = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const programs = [
+const programs : { name: string; href: string }[] = [
     { name: "Personal Training", href: "#" },
     { name: "Group Classes", href: "#" },
     { name: "HIIT Training", href: "#" },
@@ -31,13 +31,13 @@ const Footer = () => {
     { name: "Nutrition Coaching", href: "#" },
   ];
 
-  const support = [
+  const support : { name: string; href: string }[] = [
     { name: "FAQ", href: "#" },
     { name: "Policies", href: "#" },
     { name: "Privacy Policy", href: "#" },
   ];
 
-  const socialLinks = [
+  const socialLinks : { icon: any; href: string; name: string }[] = [
     { icon: Facebook, href: "#", name: "Facebook" },
     { icon: Instagram, href: "#", name: "Instagram" },
     { icon: Twitter, href: "#", name: "Twitter" },
@@ -89,7 +89,7 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-6">Quick Links</h3>
             <ul className="space-y-3">
-              {quickLinks.map((link, index) => (
+              {quickLinks.map((link, index): JSX.Element => (
                 <li key={index}>
                   <a
                     href={link.href}

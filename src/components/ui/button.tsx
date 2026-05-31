@@ -41,6 +41,10 @@ function Button({
   size,
   asChild = false,
   ...props
+}: React.ButtonHTMLAttributes<HTMLButtonElement> & {
+  variant?: "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"  
+  size?: "default" | "sm" | "lg" | "icon"
+  asChild?: boolean
 }) {
   const Comp = asChild ? Slot : "button"
 

@@ -8,8 +8,10 @@ import Trainers from "./components/Trainers";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { JSX } from "react";
 
-export default function Home() {
+
+export default function Home() : JSX.Element {
   return (
     <div className="min-h-screen">
       <Header />

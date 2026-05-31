@@ -1,12 +1,20 @@
 "use client";
 
-import React from "react";
+import React, { JSX } from "react";
 import { Check, Star, Crown } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const Pricing = () => {
+const Pricing = (): JSX.Element => {
   const router = useRouter();
-  const plans = [
+  const plans:{
+    name: string;
+    price: number;
+    period: string;
+    description: string;
+    features: string[];
+    popular: boolean;
+    cta: string;
+  }[] = [
     {
       name: "Basic",
       price: 1500,
