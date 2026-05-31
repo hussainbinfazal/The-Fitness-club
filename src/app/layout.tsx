@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "Strength Training",
     "Cardio",
     "Nutrition",
-    "gyn near me",
+    "gym near me",
     "best gym in okhla",
     "best gym in zakir nagar okhla",
     "best gym in batla house",
@@ -86,8 +86,7 @@ export default function RootLayout({ children }:{children: ReactNode}): JSX.Elem
            {children}
           <Toaster  />
         </ThemeProvider>
-      </body>
-       <Script
+        <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           strategy="afterInteractive"
         />
@@ -105,6 +104,8 @@ export default function RootLayout({ children }:{children: ReactNode}): JSX.Elem
             gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
           `}
         </Script>
+      </body>
+       
     </html>
   )
 };
